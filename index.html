@@ -44,35 +44,35 @@
     </h2>
     <div class="screenshots">
       <div class="screenshot-item">
-        <img src="assets/screenshots/ss01_dashboard.png" alt="ダッシュボード" loading="lazy">
+        <img class="ss-img" data-ja="assets/screenshots/ss01_dashboard.png" data-en="assets/screenshots/en_ss01_dashboard.png" src="assets/screenshots/ss01_dashboard.png" alt="ダッシュボード" loading="lazy">
         <p class="screenshot-caption">
           <span data-lang="ja">空けられるGBを一目で</span>
           <span data-lang="en">See reclaimable GBs instantly</span>
         </p>
       </div>
       <div class="screenshot-item">
-        <img src="assets/screenshots/ss02_swipe.png" alt="スワイプ整理" loading="lazy">
+        <img class="ss-img" data-ja="assets/screenshots/ss02_swipe.png" data-en="assets/screenshots/en_ss02_swipe.png" src="assets/screenshots/ss02_swipe.png" alt="スワイプ整理" loading="lazy">
         <p class="screenshot-caption">
           <span data-lang="ja">スワイプで直感的に整理</span>
           <span data-lang="en">Swipe to keep or trash</span>
         </p>
       </div>
       <div class="screenshot-item">
-        <img src="assets/screenshots/ss03_similar.png" alt="似た写真" loading="lazy">
+        <img class="ss-img" data-ja="assets/screenshots/ss03_similar.png" data-en="assets/screenshots/en_ss03_similar.png" src="assets/screenshots/ss03_similar.png" alt="似た写真" loading="lazy">
         <p class="screenshot-caption">
           <span data-lang="ja">類似写真を自動グループ化</span>
           <span data-lang="en">Auto-group similar photos</span>
         </p>
       </div>
       <div class="screenshot-item">
-        <img src="assets/screenshots/ss04_confirm.png" alt="削除確認" loading="lazy">
+        <img class="ss-img" data-ja="assets/screenshots/ss04_confirm.png" data-en="assets/screenshots/en_ss04_confirm.png" src="assets/screenshots/ss04_confirm.png" alt="削除確認" loading="lazy">
         <p class="screenshot-caption">
           <span data-lang="ja">削除前に1枚ずつ確認</span>
           <span data-lang="en">Review before deleting</span>
         </p>
       </div>
       <div class="screenshot-item">
-        <img src="assets/screenshots/ss05_privacy.png" alt="プライバシー" loading="lazy">
+        <img class="ss-img" data-ja="assets/screenshots/ss05_privacy.png" data-en="assets/screenshots/en_ss05_privacy.png" src="assets/screenshots/ss05_privacy.png" alt="プライバシー" loading="lazy">
         <p class="screenshot-caption">
           <span data-lang="ja">完全オンデバイス処理</span>
           <span data-lang="en">100% on-device</span>
@@ -264,6 +264,9 @@ function setLang(lang) {
   document.getElementById('btn-en').classList.toggle('active', lang === 'en');
   document.documentElement.lang = lang;
   localStorage.setItem('lang', lang);
+  document.querySelectorAll('img.ss-img').forEach(function(img) {
+    img.src = img.dataset[lang] || img.dataset.ja;
+  });
 }
 // Restore saved language preference
 const saved = localStorage.getItem('lang');
